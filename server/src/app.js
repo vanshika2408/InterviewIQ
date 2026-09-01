@@ -19,7 +19,11 @@ import {
 } from "./middleware/error.middleware.js";
 import dashboardRoutes from "./routes/dashboard.routes.js";
 
-dns.setServers(['8.8.8.8', '8.8.4.4']);
+try {
+  dns.setServers(['8.8.8.8', '8.8.4.4']);
+} catch (err) {
+  // Ignore DNS override errors in serverless containers
+}
 
 
 
